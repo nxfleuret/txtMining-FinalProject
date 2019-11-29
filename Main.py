@@ -3,12 +3,14 @@ import PreProcessing as pre
 import Weighting as weight
 import Clasification as clasf
 
-directory = os.fsencode("input")
+directory1 = os.fsencode("input")
+directory2 = os.fsencode("dataTest")
 
 terms = []
+dtTest = []
 
 # menuliskan hasil preprocessing ke dalam .txt
-for file in os.listdir(directory):
+for file in os.listdir(directory1):
      filename = os.fsdecode(file)
      str_input = open("input/"+filename, errors = 'ignore').read()
      filteredWords = pre.lemmatize_sentence(str_input).split(' ')
@@ -18,7 +20,16 @@ for file in os.listdir(directory):
          text_file.write(line + "\n")
      text_file.close()
 
+dataTest = open("dataTest/test-1.txt", errors = 'ignore').read()
+filteredWordsTest = pre.lemmatize_sentence(dataTest).split(' ')
+dtTest.append(filteredWordsTest)
+testFile = open("dataTest/hasil-dataTest.txt", "w+")
+for line in filteredWordsTest:
+    testFile.write(line + "\n")
+testFile.close()
+
 index = weight.getIndex(terms)
+dataIndex = weight.getIndex(dtTest)
 rawTerm = weight.getRawTerm(terms, index)
 logTerm = weight.getLogTerm(terms, index)
 df = weight.getDocFrequency(terms, index)
@@ -27,6 +38,9 @@ tf_idf = weight.getTFIDF(logTerm, idf)
 totalTerm = clasf.TermSum(terms, index)
 totalTermdocs = clasf.TotalTerm(terms, index)
 totalIndex = clasf.countIndex(rawTerm)
+conProbability = clasf.conditionalProb(totalIndex, terms, index)
+sameIndex = clasf.getSameIndex(dataIndex, index)
+classify = clasf.classification(sameIndex, conProbability)
 
 #menuliskan hasil perhitungan raw Term kedalam .txt
 filebaru = open("output/hasil rawTerm.txt", "w+")
@@ -62,11 +76,9 @@ filenew.close()
 #     filenew.write(str(i) + "\n")
 # filenew.close()
 
-filenew = open("output/test.txt", "w+")
-for i in totalIndex:
+#menuliskan hasil perhitungan untuk mencari conditional probability dari masing-masing index di tiap kategori
+filenew = open("output/conditionalProbability.txt", "w+")
+for i in conProbability:
     filenew.write(str(i) + "\n")
 filenew.close()
 
-print(clasf.categoryTerm[0])
-print(clasf.categoryTerm[1])
-print(clasf.categoryTerm[2])
