@@ -19,13 +19,14 @@ for file in os.listdir(directory):
      text_file.close()
 
 index = weight.getIndex(terms)
-rawTerm = weight.rawTerm(terms, index)
-totalTerm = clasf.totalTerm(terms, index)
-totalTermdocs = clasf.countTotal(terms, index)
-logTerm = weight.logTerm(terms, index)
-df = weight.docsFrequency(terms, index)
-idf = weight.inverseDocsFrequency(len(terms), df)
-tf_idf = weight.tfIdf(logTerm, idf)
+rawTerm = weight.getRawTerm(terms, index)
+logTerm = weight.getLogTerm(terms, index)
+df = weight.getDocFrequency(terms, index)
+idf = weight.getInverseDocFrequency(len(terms), df)
+tf_idf = weight.getTFIDF(logTerm, idf)
+totalTerm = clasf.TermSum(terms, index)
+totalTermdocs = clasf.TotalTerm(terms, index)
+totalIndex = clasf.countIndex(rawTerm)
 
 #menuliskan hasil perhitungan raw Term kedalam .txt
 filebaru = open("output/hasil rawTerm.txt", "w+")
@@ -55,9 +56,17 @@ for i in totalTerm:
     filenew.write(str(i) + "\n")
 filenew.close()
 
+# #menuliskan hasil penjumlahan total dari rawTerm tiap dokumen pada masing-masing kategori
 # filenew = open("output/totalTerm per Doc.txt", "w+")
 # for i in totalTermdocs:
 #     filenew.write(str(i) + "\n")
 # filenew.close()
 
-print(clasf.totIndex(index))
+filenew = open("output/test.txt", "w+")
+for i in totalIndex:
+    filenew.write(str(i) + "\n")
+filenew.close()
+
+print(clasf.categoryTerm[0])
+print(clasf.categoryTerm[1])
+print(clasf.categoryTerm[2])

@@ -10,19 +10,19 @@ def getIndex(terms):
     return index
 
 # method untuk mendapatkan nilai raw term frequency
-def rawTerm (terms, index):
-    rawWeight =[]
+def getRawTerm (terms, index):
+    rawTerm =[]
 
     for term in terms:
         docWeight = []
         for idx in index:
             docWeight.append(term.count(idx))
-        rawWeight.append(docWeight)
-    return rawWeight
+        rawTerm.append(docWeight)
+    return rawTerm
 
 # method untuk mendapatkan nilai log term frequency dari nilai raw term frequency yang didapat sebelumnya
-def logTerm (terms, index):
-    logWeight =[]
+def getLogTerm (terms, index):
+    logTerm =[]
     for term in terms:
         docWeight = []
         for idx in index:
@@ -30,31 +30,31 @@ def logTerm (terms, index):
                 docWeight.append(1 + math.log10(term.count(idx)))
             else:
                 docWeight.append(0)      
-        logWeight.append(docWeight)
-    return logWeight
+        logTerm.append(docWeight)
+    return logTerm
 
 # method untuk memperoleh nilai document frequency
-def docsFrequency(terms, index):
-    df = []
+def getDocFrequency(terms, index):
+    docFreq = []
     for idx in index:
         dfWeight = 0
         for term in terms:
             if (idx in term):
                 dfWeight += 1
-        df.append(dfWeight)
-    return df
+        docFreq.append(dfWeight)
+    return docFreq
 
 #method untuk mempoeroleh nilai inverse dari nilai document frequency yang didapat sebelumnya
-def inverseDocsFrequency(nDocs, df):
-    invFreq = []
+def getInverseDocFrequency(nDocs, df):
+    invDocFreq = []
     for item in df:
-        invFreq.append(math.log10(nDocs)/item)
-    return invFreq
+        invDocFreq.append(math.log10(nDocs)/item)
+    return invDocFreq
 
 #method untuk menghitung nilai TF-IDF yang didapat dari hasil perkalian nilai log term frequency dan nilai inverse document frequency
-def tfIdf(tfs, idf):
+def getTFIDF(logtf, idf):
     tfIdf = []
-    for tf in tfs:
+    for tf in logtf:
         row =  []
         for i in range(0, len(idf)):
             row.append(tf[i] * idf[i])    

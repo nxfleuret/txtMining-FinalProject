@@ -104,7 +104,4 @@ def lemmatize_sentence(sentence):
 
     return " ".join(lemmatized_sentence)
 
-
-
 lemmatizer = WordNetLemmatizer()
-

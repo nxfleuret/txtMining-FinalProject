@@ -3,7 +3,7 @@ import Weighting as weight
 
 categoryTerm = []
 
-def totalTerm (terms, index):
+def TermSum (terms, index):
     totalTerm =[]
 
     for term in terms:
@@ -13,8 +13,8 @@ def totalTerm (terms, index):
         totalTerm.append(total)
     return totalTerm
 
-def countTotal (terms, index):
-    totTerm = totalTerm(terms, index)
+def TotalTerm (terms, index):
+    totTerm = TermSum(terms, index)
     catA = 0
     catB = 0
     catC = 0
@@ -29,6 +29,21 @@ def countTotal (terms, index):
     categoryTerm.append(catB)
     categoryTerm.append(catC)
     return 0
+
+#masih salah
+def countIndex (param):
+    totalIndex = []
+    temp = []
+
+    for a in param:
+        total = 0
+        for i, b in enumerate (a):
+            for x in range(1338):
+                if(i==x):
+                    total += b
+                    temp.append(total)
+    totalIndex.append(temp)
+    return totalIndex
 
 def totIndex (index):
     count = 0
