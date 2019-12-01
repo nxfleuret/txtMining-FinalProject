@@ -17,7 +17,7 @@ continuous
 labour
 outflow
 agriculture
-fromstandardized
+standardize
 task
 production
 process

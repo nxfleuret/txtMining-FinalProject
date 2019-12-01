@@ -86,7 +86,6 @@ maintain
 sehpp
 enantiomeric
 excess
-ee
 integration
 approach
 lead

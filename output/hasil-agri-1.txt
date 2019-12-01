@@ -25,9 +25,9 @@ require
 complex
 extraction
 image
-featuresbwhereas
+feature
 deep
-learning
+learn
 technology
 automatically
 learn
@@ -63,7 +63,7 @@ supervisory
 service
 system
 improve
-inceptionv
+inception
 network
 network
 call
@@ -91,7 +91,7 @@ performance
 classic
 network
 resnet
-inceptionv
+inception
 test
 performance
 amtnet

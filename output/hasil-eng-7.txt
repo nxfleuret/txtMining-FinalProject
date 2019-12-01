@@ -5,8 +5,7 @@ engineering
 publish
 numerous
 paper
-appli
-cation
+application
 compute
 technology
 chemical
@@ -14,8 +13,7 @@ engineering
 problem
 paper
 topic
-anal
-ysis
+analysis
 journal
 text
 mining

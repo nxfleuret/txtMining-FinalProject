@@ -3,7 +3,6 @@ import numpy as np
 import Weighting as weight
 
 categoryTerm = []
-count = 0
 
 #method untuk mencari jumlah term dari masing-masing dokumen
 def TermSum (terms, index):
@@ -42,14 +41,13 @@ def countIndex (rawTerm):
             temp = i*10
             tempIndex.append(np.sum(np.array(rawTerm)[temp-10:temp,j]))
         Index.append(tempIndex)
+    global totIndex
+    totIndex = len(rawTerm[0])
     return Index
 
 #method untuk mencari jumlah index keseluruhan
-def totIndex (index):
-    count = 0
-    for idx in index:
-        count += 1
-    return count
+# def totIndex (rawTerm):
+#     count = len(rawTerm)
 
 #method untuk mencari nilai Conditional Probability dari masing-masing index
 def conditionalProb (index, x, y):
@@ -59,7 +57,7 @@ def conditionalProb (index, x, y):
     for a, idx in enumerate(index):
         tempConProb = []
         for count, b in enumerate(idx):
-            tempConProb.append((b + 1)/(categoryTerm[a]+count))
+            tempConProb.append((b + 1)/(categoryTerm[a]+totIndex))
         conProbIndex.append(tempConProb)
     return conProbIndex
 
