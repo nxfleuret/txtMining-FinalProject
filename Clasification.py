@@ -3,6 +3,7 @@ import numpy as np
 import Weighting as weight
 
 categoryTerm = []
+count = 0
 
 #method untuk mencari jumlah term dari masing-masing dokumen
 def TermSum (terms, index):
@@ -58,7 +59,7 @@ def conditionalProb (index, x, y):
     for a, idx in enumerate(index):
         tempConProb = []
         for count, b in enumerate(idx):
-            tempConProb.append((b + 1)/(categoryTerm[a]+1339))
+            tempConProb.append((b + 1)/(categoryTerm[a]+count))
         conProbIndex.append(tempConProb)
     return conProbIndex
 
@@ -74,9 +75,6 @@ def getSameIndex (a1, a2):
 
 #method untuk menghitung klasifikasi dari data uji, data tersebut akan diolah untuk mendapatkan klasifikasinya dengan metode naive bayes
 def classification(sameIndex, conProbability):
-    clasA = 0
-    clasB = 0
-    clasC = 0
     klasifikasi = []
 
     for count, a in enumerate(conProbability):
@@ -87,11 +85,13 @@ def classification(sameIndex, conProbability):
                     temp = temp * b / 3
         klasifikasi.append(temp)
     
-    print(klasifikasi)
-    
     if (klasifikasi[0] > klasifikasi[1] and klasifikasi[0] > klasifikasi[2]):
-        print("agriculture")
+        klasifikasi.append("agriculture")
     elif (klasifikasi[1] > klasifikasi[0] and klasifikasi[1] > klasifikasi[2]):
-        print("education")
+        klasifikasi.append("education")
     elif (klasifikasi[2] > klasifikasi[0] and klasifikasi[2] > klasifikasi[1]):
-        print("engineering")
+        klasifikasi.append("engineering")
+
+    print(klasifikasi[3])
+
+    return klasifikasi

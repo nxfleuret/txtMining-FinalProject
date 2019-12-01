@@ -20,7 +20,8 @@ for file in os.listdir(directory1):
          text_file.write(line + "\n")
      text_file.close()
 
-dataTest = open("dataTest/test-1.txt", errors = 'ignore').read()
+# mengambil data uji dari file yang telah tersedia di folder dataTest
+dataTest = open("dataTest/test-7.txt", errors = 'ignore').read()
 filteredWordsTest = pre.lemmatize_sentence(dataTest).split(' ')
 dtTest.append(filteredWordsTest)
 testFile = open("dataTest/hasil-dataTest.txt", "w+")
@@ -35,8 +36,8 @@ logTerm = weight.getLogTerm(terms, index)
 df = weight.getDocFrequency(terms, index)
 idf = weight.getInverseDocFrequency(len(terms), df)
 tf_idf = weight.getTFIDF(logTerm, idf)
+
 totalTerm = clasf.TermSum(terms, index)
-totalTermdocs = clasf.TotalTerm(terms, index)
 totalIndex = clasf.countIndex(rawTerm)
 conProbability = clasf.conditionalProb(totalIndex, terms, index)
 sameIndex = clasf.getSameIndex(dataIndex, index)
@@ -75,3 +76,12 @@ filenew = open("output/conditionalProbability.txt", "w+")
 for i in conProbability:
     filenew.write(str(i) + "\n")
 filenew.close()
+
+filenew = open("output/trace hasilKlasifikasi.txt", "a")
+for i in classify:
+    filenew.write(str(i) + "\n")
+filenew.write("\n")
+filenew.close()
+
+#mencetak index dari terms yang sama antara data uji dengan data latih
+print(sameIndex)
