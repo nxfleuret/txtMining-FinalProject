@@ -4,6 +4,7 @@ import Weighting as weight
 
 categoryTerm = []
 
+#method untuk mencari jumlah term dari masing-masing dokumen
 def TermSum (terms, index):
     totalTerm =[]
 
@@ -14,6 +15,7 @@ def TermSum (terms, index):
         totalTerm.append(total)
     return totalTerm
 
+#method untuk mencari jumlah term keseluruhan masing-masing kategori
 def TotalTerm (terms, index):
     totTerm = TermSum(terms, index)
     catA = 0
@@ -30,6 +32,7 @@ def TotalTerm (terms, index):
     categoryTerm.append(catB)
     categoryTerm.append(catC)
 
+#method untuk menghitung nilai penjumlahan masing-masing index menurut kategorinya
 def countIndex (rawTerm):
     Index  = []
     for i in range(1, 4):
@@ -40,12 +43,14 @@ def countIndex (rawTerm):
         Index.append(tempIndex)
     return Index
 
+#method untuk mencari jumlah index keseluruhan
 def totIndex (index):
     count = 0
     for idx in index:
         count += 1
     return count
 
+#method untuk mencari nilai Conditional Probability dari masing-masing index
 def conditionalProb (index, x, y):
     TotalTerm(x, y)
     conProbIndex = []
@@ -57,6 +62,7 @@ def conditionalProb (index, x, y):
         conProbIndex.append(tempConProb)
     return conProbIndex
 
+#method untuk mencari index yang sama dari data sebelumnya dengan index pada data uji
 def getSameIndex (a1, a2):
     sameIndex = []
 
@@ -66,18 +72,26 @@ def getSameIndex (a1, a2):
                 sameIndex.append(count)
     return sameIndex
 
+#method untuk menghitung klasifikasi dari data uji, data tersebut akan diolah untuk mendapatkan klasifikasinya dengan metode naive bayes
 def classification(sameIndex, conProbability):
     clasA = 0
     clasB = 0
     clasC = 0
     klasifikasi = []
-    for a in sameIndex:
-        for b in range(len(conProbability[0])):
-            if(a == b):
-                clasA = clasA * np.array(conProbability)[0:a]
-                clasB = clasB * np.array(conProbability)[1:a]
-                clasC = clasC * np.array(conProbability)[2:a]
-    klasifikasi.append(clasA/3)
-    klasifikasi.append(clasB/3)
-    klasifikasi.append(clasC/3)
-    print(len(klasifikasi))
+
+    for count, a in enumerate(conProbability):
+        for idx in sameIndex:
+            temp = 1
+            for counter, b in enumerate(a):
+                if(idx == counter):
+                    temp = temp * b / 3
+        klasifikasi.append(temp)
+    
+    print(klasifikasi)
+    
+    if (klasifikasi[0] > klasifikasi[1] and klasifikasi[0] > klasifikasi[2]):
+        print("agriculture")
+    elif (klasifikasi[1] > klasifikasi[0] and klasifikasi[1] > klasifikasi[2]):
+        print("education")
+    elif (klasifikasi[2] > klasifikasi[0] and klasifikasi[2] > klasifikasi[1]):
+        print("engineering")

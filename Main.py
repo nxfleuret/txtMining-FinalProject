@@ -70,15 +70,8 @@ for i in totalTerm:
     filenew.write(str(i) + "\n")
 filenew.close()
 
-# #menuliskan hasil penjumlahan total dari rawTerm tiap dokumen pada masing-masing kategori
-# filenew = open("output/totalTerm per Doc.txt", "w+")
-# for i in totalTermdocs:
-#     filenew.write(str(i) + "\n")
-# filenew.close()
-
 #menuliskan hasil perhitungan untuk mencari conditional probability dari masing-masing index di tiap kategori
 filenew = open("output/conditionalProbability.txt", "w+")
 for i in conProbability:
     filenew.write(str(i) + "\n")
 filenew.close()
-
