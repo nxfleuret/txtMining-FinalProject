@@ -80,8 +80,8 @@ def classification(sameIndex, conProbability):
             temp = 1
             for counter, b in enumerate(a):
                 if(idx == counter):
-                    temp = temp * b / 3
-        klasifikasi.append(temp)
+                    temp = temp * b
+        klasifikasi.append(temp/3)
     
     if (klasifikasi[0] > klasifikasi[1] and klasifikasi[0] > klasifikasi[2]):
         klasifikasi.append("agriculture")

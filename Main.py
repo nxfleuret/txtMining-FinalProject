@@ -21,7 +21,7 @@ for file in os.listdir(directory1):
      text_file.close()
 
 # mengambil data uji dari file yang telah tersedia di folder dataTest
-dataTest = open("dataTest/eng-7.txt", errors = 'ignore').read()
+dataTest = open("dataTest/eng-5.txt", errors = 'ignore').read()
 filteredWordsTest = pre.lemmatize_sentence(dataTest).split(' ')
 dtTest.append(filteredWordsTest)
 testFile = open("dataTest/hasil-dataTest.txt", "w+")
