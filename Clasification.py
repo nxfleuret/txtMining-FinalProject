@@ -17,6 +17,7 @@ def TermSum (terms, index):
 
 #method untuk mencari jumlah term keseluruhan masing-masing kategori
 def TotalTerm (terms, index):
+
     totTerm = TermSum(terms, index)
     catA = 0
     catB = 0
@@ -35,29 +36,27 @@ def TotalTerm (terms, index):
 #method untuk menghitung nilai penjumlahan masing-masing index menurut kategorinya
 def countIndex (rawTerm):
     Index  = []
+
+    global totIndex
+    totIndex = len(rawTerm[0])
+
     for i in range(1, 4):
         tempIndex = []
-        for j in range(len(rawTerm[0])):
+        for j in range(totIndex):
             temp = i*10
             tempIndex.append(np.sum(np.array(rawTerm)[temp-10:temp,j]))
         Index.append(tempIndex)
-    global totIndex
-    totIndex = len(rawTerm[0])
     return Index
 
-#method untuk mencari jumlah index keseluruhan
-# def totIndex (rawTerm):
-#     count = len(rawTerm)
-
 #method untuk mencari nilai Conditional Probability dari masing-masing index
-def conditionalProb (index, x, y):
+def conditionalProb (totalIndex, x, y):
     TotalTerm(x, y)
     conProbIndex = []
 
-    for a, idx in enumerate(index):
+    for category, countIndexInAnyCategory in enumerate(totalIndex):
         tempConProb = []
-        for count, b in enumerate(idx):
-            tempConProb.append((b + 1)/(categoryTerm[a]+totIndex))
+        for index, value in enumerate(countIndexInAnyCategory):
+            tempConProb.append((value + 1)/(categoryTerm[category]+totIndex))
         conProbIndex.append(tempConProb)
     return conProbIndex
 

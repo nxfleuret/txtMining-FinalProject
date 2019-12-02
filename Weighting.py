@@ -60,5 +60,3 @@ def getTFIDF(logtf, idf):
             row.append(tf[i] * idf[i])    
         tfIdf.append(row)
     return tfIdf
-
-
