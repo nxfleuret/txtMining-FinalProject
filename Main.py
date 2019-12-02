@@ -9,7 +9,10 @@ directory2 = os.fsencode("dataTest")
 terms = []
 dtTest = []
 
-# menuliskan hasil preprocessing ke dalam .txt
+# pada tahap PreProcessing tidak melalui proses cleaning karena data latih berupa abstraksi dari jurnal sehingga
+# sudah menggunakan kata-kata baku dalam penulisannya
+
+# melakukan tahap PreProcessing pada data latih
 for file in os.listdir(directory1):
      filename = os.fsdecode(file)
      str_input = open("input/"+filename, errors = 'ignore').read()
@@ -20,7 +23,7 @@ for file in os.listdir(directory1):
          text_file.write(line + "\n")
      text_file.close()
 
-# mengambil data uji dari file yang telah tersedia di folder dataTest
+# melakukan tahap PreProcessing pada data uji
 dataTest = open("dataTest/eng-5.txt", errors = 'ignore').read()
 filteredWordsTest = pre.lemmatize_sentence(dataTest).split(' ')
 dtTest.append(filteredWordsTest)
