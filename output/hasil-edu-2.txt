@@ -48,7 +48,7 @@ point
 university
 subject
 process
-globalization—
+globalization
 partly
 object
 victim
@@ -80,7 +80,6 @@ worldwide
 brand
 imagesascommodities
 scientific
-knowhow
 tension
 generate
 dichotomy

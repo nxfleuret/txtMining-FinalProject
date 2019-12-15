@@ -27,8 +27,8 @@ framework
 study
 establishes
 nonmonetary
-â€œdonor
-sideâ€
+"donor
+side"
 ecosystem
 service
 valuation

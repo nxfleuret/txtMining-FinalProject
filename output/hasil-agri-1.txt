@@ -5,7 +5,8 @@ generate
 mobile
 internet
 development
-largescale
+large
+scale
 compute
 device
 technology

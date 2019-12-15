@@ -5,7 +5,8 @@ played
 central
 role
 promote
-schooltowork
+school
+work
 transition
 young
 people
@@ -32,7 +33,8 @@ national
 vet
 system
 include
-schoolbased
+school
+base
 workbased
 vet
 system
@@ -56,7 +58,8 @@ graduate
 literacy
 skill
 disadvantage
-shortterm
+short
+term
 employment
 advantage
 longterm
@@ -81,7 +84,8 @@ compare
 vet
 graduate
 general
-educationoriented
+education
+orient
 country
 vet
 graduate

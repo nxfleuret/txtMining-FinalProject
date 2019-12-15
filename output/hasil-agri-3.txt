@@ -1,6 +1,6 @@
 grow
 commitment
-women’s
+woman
 empowerment
 agricultural
 development
@@ -9,7 +9,7 @@ sound
 method
 indicator
 measure
-women’s
+womens
 empowerment
 need
 learn
@@ -20,7 +20,7 @@ strategy
 work
 empower
 woman
-women’sempowerment
+womensempowerment
 agriculture
 weai
 require
@@ -44,7 +44,7 @@ project
 identify
 key
 area
-women’s
+womens
 men’s
 disempowerment
 design
@@ -56,7 +56,7 @@ deficiency
 monitor
 project
 outcome
-women’s
+womens
 empowerment
 proweai
 indicator
@@ -84,7 +84,7 @@ describe
 development
 proweai
 include
-proweai’s
+proweais
 distinctiveness
 version
 weai
@@ -115,7 +115,7 @@ qualitative
 work
 explore
 concept
-women’s
+womens
 empowerment
 project
 sit
